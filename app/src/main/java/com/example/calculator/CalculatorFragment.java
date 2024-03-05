@@ -46,7 +46,8 @@ public class CalculatorFragment extends Fragment {
             btnSix, btnSeven, btnEight, btnNine, btnZero, btnDoubleZero;
     AppCompatButton btnDecimal, btnClear, btnEqual, btnPercentage,
             btnDivide, btnMultiply, btnMinus, btnAdd, btnDelete;
-    AppCompatButton btnBracketLeft,btnBracketRight,btnCaret, btnHistory;
+    AppCompatButton btnBracketLeft,btnBracketRight,btnCaret;
+    AppCompatImageButton btnHistory;
     TextView tvExpression, tvResult;
 
     public CalculatorFragment() {
@@ -506,6 +507,13 @@ public class CalculatorFragment extends Fragment {
                     updateText("%");
                 }
             });
+            btnHistory = (AppCompatImageButton) getActivity().findViewById(R.id.btnHistory);
+            btnHistory.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showHistoryDialog();
+                }
+            });
 
         } else {
             AppCompatButton btnOne, btnTwo, btnThree, btnFour, btnFive,
@@ -545,7 +553,7 @@ public class CalculatorFragment extends Fragment {
             tvExpression = (TextView) rootView.findViewById(R.id.tvExpression);
             tvResult = (TextView) rootView.findViewById(R.id.tvResult);
 
-            btnHistory = (AppCompatButton) getActivity().findViewById(R.id.btnHistory);
+            btnHistory = (AppCompatImageButton) getActivity().findViewById(R.id.btnHistory);
 
             clearScreen();
 

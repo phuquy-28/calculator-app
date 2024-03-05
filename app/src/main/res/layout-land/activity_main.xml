@@ -26,16 +26,19 @@
                     android:id="@+id/topAppBar"
                     android:layout_width="wrap_content"
                     android:layout_height="?attr/actionBarSize"
-                    android:layout_weight="1"
+                    android:layout_weight="6"
                     app:title="Calculator"
                     app:navigationIcon="@drawable/ic_action_menubtn"
                     android:background="@color/white"/>
 
-                <androidx.appcompat.widget.AppCompatButton
+                <androidx.appcompat.widget.AppCompatImageButton
                     android:id="@+id/btnHistory"
-                    android:layout_width="wrap_content"
+                    style="@style/UpSpecialButton"
+                    android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:text="LS" />
+                    android:contentDescription="none"
+                    android:src="@drawable/history"
+                    android:scaleType="fitCenter"/>
 
             </LinearLayout>
 
