@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!--Number Button-->
+    <color name="colorBtnNumberBG">@color/white</color>
+    <color name="colorBtnNumberTEXT">@color/black</color>
+
+    <!--Operator Button-->
+    <color name="colorBtnOperatorBG">#FFFFFF</color>
+    <color name="colorBtnOperatorTEXT">@color/black</color>
+
+    <!--Special Button-->
+    <color name="colorBtnSpecialBG">#8BC34A</color>
+    <color name="colorBtnSpecialTEXT">@color/black</color>
+
+    <color name="colorBtnEqualBG">#2196F3</color>
+</resources>

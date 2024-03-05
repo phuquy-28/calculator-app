@@ -1,0 +1,51 @@
+<resources >
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Calculator" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Calculator" parent="Base.Theme.Calculator" />
+
+    <!--    Number Button-->
+    <style name="NumberButton">
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_rowWeight">1</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:background">@color/colorBtnNumberBG</item>
+        <item name="android:textColor">@color/colorBtnNumberTEXT</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Operator Button-->
+    <style name="OperatorButton">
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_rowWeight">1</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:background">@color/colorBtnOperatorBG</item>
+        <item name="android:textColor">@color/colorBtnOperatorTEXT</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--    Special Button-->
+    <style name="SpecialButton">
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_rowWeight">1</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:background">@color/colorBtnSpecialBG</item>
+        <item name="android:textColor">@color/colorBtnSpecialTEXT</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="UpSpecialButton">
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@color/colorBtnNumberBG</item>
+        <item name="android:textColor">@color/colorBtnNumberTEXT</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

@@ -1,0 +1,48 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="oneHBtn">1</string>
+    <string name="twoHBtn">2</string>
+    <string name="threeHBtn">3</string>
+    <string name="fourHBtn">4</string>
+    <string name="fiveHBtn">5</string>
+    <string name="sixHBtn">6</string>
+    <string name="sevenHBtn">7</string>
+    <string name="eightHBtn">8</string>
+    <string name="nineHBtn">9</string>
+    <string name="zeroHBtn">0</string>
+    <string name="doubleZeroHBtn">00</string>
+
+    <string name="clearHBtn">AC</string>
+    <string name="parenthesesOpenHBtn">(</string>
+    <string name="parenthesesCloseHBtn">)</string>
+    <string name="divideHBtn">÷</string>
+    <string name="multiplyHBtn">×</string>
+    <string name="addHBtn">+</string>
+    <string name="subtractHBtn">-</string>
+    <string name="decimalHBtn">.</string>
+    <string name="equalsHBtn">=</string>
+
+    <string name="trigSinHBtn">sin</string>
+    <string name="trigCosHBtn">cos</string>
+    <string name="trigTanHBtn">tan</string>
+    <string name="trigArcSinHBtn">sin<sup><small>-1</small></sup></string>
+    <string name="trigArcCosHBtn">cos<sup><small>-1</small></sup></string>
+    <string name="trigArcTanHBtn">tan<sup><small>-1</small></sup></string>
+    <string name="naturalLogHBtn">ln</string>
+    <string name="LogHBtn">log</string>
+    <string name="squareRootHBtn">√</string>
+    <string name="absoluteValueHBtn">|x|</string>
+    <string name="piHBtn">π</string>
+    <string name="eHBtn">e</string>
+    <string name="xSquaredHBtn">x<sup><small>2</small></sup></string>
+    <string name="xCubedHBtn">x<sup><small>3</small></sup></string>
+    <string name="xPowerYHBtn">^</string>
+
+    <string name="backspace"> </string>
+    <string name="percentageHBtn">%</string>
+    <string name="empty" />
+    <string name="pre_cal">Tesst</string>
+    <string name="log2">log<sub>2</sub></string>
+    <string name="exp">exp</string>
+</resources>

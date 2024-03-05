@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ecf0f9"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CalculatorFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp">
+
+        <EditText
+            android:id="@+id/displayHEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:text="@string/empty"
+            android:textAlignment="textEnd"
+            android:textSize="36sp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/preCalHTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/empty"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/displayHEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <Button
+                android:id="@+id/squareRootHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:background="@drawable/horizontally_button_background"
+                android:text="@string/squareRootHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@+id/expHBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/piHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:text="@string/piHBtn"
+                android:background="@drawable/horizontally_button_background"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@+id/squareRootHBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/eHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:text="@string/eHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/piHBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/openParHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:text="@string/parenthesesOpenHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/eHBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/closeParHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:text="@string/parenthesesCloseHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/openParHBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/xPowerYHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:text="@string/xPowerYHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/closeParHBtn"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/backspaceHBtn"
+                android:layout_width="0dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/horizontally_button_background"
+                android:scaleType="fitCenter"
+                android:text="@string/backspace"
+                app:layout_constraintEnd_toEndOf="@+id/clearHBtn"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/xPowerYHBtn"
+                app:layout_constraintStart_toStartOf="@+id/clearHBtn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/backspace" />
+
+            <Button
+                android:id="@+id/sinHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/trigSinHBtn"
+                android:background="@drawable/horizontally_button_background"
+                android:textSize="18sp"
+                android:textAllCaps="false"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/expHBtn" />
+
+            <Button
+                android:id="@+id/cosHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/trigCosHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/sinHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/squareRootHBtn" />
+
+            <Button
+                android:id="@+id/tanHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/trigTanHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/cosHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/piHBtn" />
+
+            <Button
+                android:id="@+id/sevenHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/sevenHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/tanHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/eHBtn" />
+
+            <Button
+                android:id="@+id/eightHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/eightHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/sevenHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/openParHBtn" />
+
+            <Button
+                android:id="@+id/nineHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/nineHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/eightHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/closeParHBtn" />
+
+            <Button
+                android:id="@+id/mulHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/multiplyHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/nineHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/xPowerYHBtn" />
+
+            <Button
+                android:id="@+id/clearHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/horizontally_button_background"
+                android:text="@string/clearHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:backgroundTint="#3e8bfd"
+                app:layout_constraintStart_toEndOf="@+id/mulHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/backspaceHBtn" />
+
+            <Button
+                android:id="@+id/arcSinHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/trigArcSinHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sinHBtn" />
+
+            <Button
+                android:id="@+id/arcCosHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/trigArcCosHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/arcSinHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/cosHBtn" />
+
+            <Button
+                android:id="@+id/arcTanHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/trigArcTanHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/arcCosHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/tanHBtn" />
+
+            <Button
+                android:id="@+id/fourHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/fourHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/arcTanHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/sevenHBtn" />
+
+            <Button
+                android:id="@+id/fiveHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/fiveHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/fourHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/eightHBtn" />
+
+            <Button
+                android:id="@+id/sixHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/horizontally_button_background"
+                android:text="@string/sixHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@+id/fiveHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/nineHBtn" />
+
+            <Button
+                android:id="@+id/subtractHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/subtractHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/sixHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/mulHBtn" />
+
+            <Button
+                android:id="@+id/percentageHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/percentageHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/subtractHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/clearHBtn" />
+
+            <Button
+                android:id="@+id/logHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/LogHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/arcSinHBtn" />
+
+            <Button
+                android:id="@+id/natureLogHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/naturalLogHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/logHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/arcCosHBtn" />
+
+            <Button
+                android:id="@+id/log2HBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/log2"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:textAllCaps="false"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/natureLogHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/arcTanHBtn" />
+
+            <Button
+                android:id="@+id/absoluteHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/absoluteValueHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/cubeHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/log2HBtn" />
+
+            <Button
+                android:id="@+id/oneHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/horizontally_button_background"
+                android:text="@string/oneHBtn"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/log2HBtn"
+                app:layout_constraintTop_toBottomOf="@+id/fourHBtn" />
+
+            <Button
+                android:id="@+id/twoHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/horizontally_button_background"
+                android:text="@string/twoHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@+id/oneHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/fiveHBtn" />
+
+            <Button
+                android:id="@+id/threeHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/threeHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/twoHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/sixHBtn" />
+
+            <Button
+                android:id="@+id/addHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/addHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/threeHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/subtractHBtn" />
+
+            <Button
+                android:id="@+id/equalHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/equalsHBtn"
+                android:textSize="18sp"
+                android:backgroundTint="#3e8bfd"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintBottom_toBottomOf="@+id/divideHBtn"
+                app:layout_constraintStart_toEndOf="@+id/divideHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/subtractHBtn" />
+
+            <Button
+                android:id="@+id/squareHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/xSquaredHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logHBtn" />
+
+            <Button
+                android:id="@+id/cubeHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/horizontally_button_background"
+                android:text="@string/xCubedHBtn"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/squareHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/natureLogHBtn" />
+
+            <Button
+                android:id="@+id/zeroHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/horizontally_button_background"
+                android:text="@string/zeroHBtn"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/absoluteHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/oneHBtn" />
+
+            <Button
+                android:id="@+id/doubleZeroHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="@string/doubleZeroHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/horizontally_button_background"
+                app:layout_constraintStart_toEndOf="@+id/zeroHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/twoHBtn" />
+
+            <Button
+                android:id="@+id/decimalHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/horizontally_button_background"
+                android:text="@string/decimalHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@+id/doubleZeroHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/threeHBtn" />
+
+            <Button
+                android:id="@+id/divideHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/horizontally_button_background"
+                android:text="@string/divideHBtn"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"
+                android:layout_marginStart="4dp"
+                app:layout_constraintStart_toEndOf="@+id/decimalHBtn"
+                app:layout_constraintTop_toBottomOf="@+id/addHBtn" />
+
+            <Button
+                android:id="@+id/expHBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:text="@string/exp"
+                android:background="@drawable/horizontally_button_background"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp"
+                android:textAllCaps="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
