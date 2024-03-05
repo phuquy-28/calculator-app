@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
 
 import android.text.SpannableStringBuilder;
@@ -32,12 +33,6 @@ public class CalculatorFragment extends Fragment {
     private String mParam2;
     private TextView previousCalculation;
     private EditText display;
-    AppCompatButton btnOne, btnTwo, btnThree, btnFour, btnFive,
-            btnSix, btnSeven, btnEight, btnNine, btnZero, btnDoubleZero;
-    AppCompatButton btnDecimal, btnClear, btnEqual, btnPercentage,
-            btnDivide, btnMultiply, btnMinus, btnAdd, btnDelete;
-    AppCompatButton btnBracketLeft,btnBracketRight,btnCaret;
-    TextView tvExpression, tvResult;
 
     public CalculatorFragment() {
         // Required empty public constructor
@@ -69,13 +64,18 @@ public class CalculatorFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    private void writeExpression (String value) {
+    private void writeExpression (TextView tvResult,TextView tvExpression,String value) {
+        if (tmp == 1 && value != "÷" && value != "+" && value != "-" && value != "x"){
+            clearScreen(tvResult,tvExpression);
+        }
+        tmp = 0;
         String expression = tvResult.getText().toString();
         expression = expression + value;
         tvResult.setText(expression);
     }
-
-    private void enterPress () {
+    int tmp = 0;
+    private void enterPress (TextView tvResult,TextView tvExpression) {
+        tmp = 1;
         String expression = tvResult.getText().toString();
         tvExpression.setText(expression);
         expression = expression.replaceAll(getResources().getString(R.string.divideHBtn), "/");
@@ -84,7 +84,7 @@ public class CalculatorFragment extends Fragment {
         tvResult.setText(result.toString());
     }
 
-    private void delScreen () {
+    private void delScreen (TextView tvResult,TextView tvExpression) {
         String result = tvResult.getText().toString();
         String expression = tvExpression.getText().toString();
         // Kiểm tra xem chuỗi có ít nhất một ký tự không
@@ -107,7 +107,7 @@ public class CalculatorFragment extends Fragment {
         }
     }
 
-    private void clearScreen () {
+    private void clearScreen (TextView tvResult,TextView tvExpression) {
         tvExpression.setText("");
         tvResult.setText("");
     }
@@ -457,6 +457,13 @@ public class CalculatorFragment extends Fragment {
             });
 
         } else {
+            AppCompatButton btnOne, btnTwo, btnThree, btnFour, btnFive,
+                    btnSix, btnSeven, btnEight, btnNine, btnZero, btnDoubleZero;
+            AppCompatButton btnDecimal, btnClear, btnEqual, btnPercentage,
+                    btnDivide, btnMultiply, btnMinus, btnAdd, btnSqrt;
+            AppCompatButton btnBracketLeft,btnBracketRight,btnCaret;
+            AppCompatImageButton btnDelete;
+            TextView tvExpression, tvResult;
             btnZero = rootView.findViewById(R.id.btnZero);
             btnOne = rootView.findViewById(R.id.btnOne);
             btnTwo = rootView.findViewById(R.id.btnTwo);
@@ -478,43 +485,43 @@ public class CalculatorFragment extends Fragment {
             btnMinus = (AppCompatButton) rootView.findViewById(R.id.btnMinus);
             btnAdd = (AppCompatButton) rootView.findViewById(R.id.btnAdd);
             btnEqual = (AppCompatButton) rootView.findViewById(R.id.btnEqual);
-            btnDelete = (AppCompatButton) rootView.findViewById(R.id.btnDelete);
+            btnDelete = (AppCompatImageButton) rootView.findViewById(R.id.btnDelete);
             btnBracketLeft = (AppCompatButton) rootView.findViewById(R.id.btnBracketLeft);
             btnBracketRight = (AppCompatButton) rootView.findViewById(R.id.btnBracketRight);
             btnCaret = (AppCompatButton) rootView.findViewById(R.id.btnCaret);
+            btnSqrt = (AppCompatButton) rootView.findViewById(R.id.btnSqrt);
             /* Text View*/
             tvExpression = (TextView) rootView.findViewById(R.id.tvExpression);
             tvResult = (TextView) rootView.findViewById(R.id.tvResult);
 
-            clearScreen();
+            clearScreen(tvResult,tvExpression);
 
-            btnClear.setOnClickListener(v -> clearScreen());
+            btnClear.setOnClickListener(v -> clearScreen(tvResult,tvExpression));
 
             // Set click listeners
-            btnZero.setOnClickListener(v -> writeExpression("0"));
-            btnOne.setOnClickListener(v -> writeExpression("1"));
-            btnTwo.setOnClickListener(v -> writeExpression("2"));
-            btnThree.setOnClickListener(v -> writeExpression("3"));
-            btnFour.setOnClickListener(v -> writeExpression("4"));
-            btnFive.setOnClickListener(v -> writeExpression("5"));
-            btnSix.setOnClickListener(v -> writeExpression("6"));
-            btnSeven.setOnClickListener(v -> writeExpression("7"));
-            btnEight.setOnClickListener(v -> writeExpression("8"));
-            btnNine.setOnClickListener(v -> writeExpression("9"));
-            btnDecimal.setOnClickListener(v -> writeExpression("."));
-            btnDoubleZero.setOnClickListener(v -> writeExpression("00"));
-            btnPercentage.setOnClickListener(v -> writeExpression("%"));
-            btnDivide.setOnClickListener(v -> writeExpression("÷"));
-            btnMultiply.setOnClickListener(v -> writeExpression("x"));
-            btnMinus.setOnClickListener(v -> writeExpression("-"));
-            btnAdd.setOnClickListener(v -> writeExpression("+"));
-
-            btnBracketLeft.setOnClickListener(v -> writeExpression("("));
-            btnBracketRight.setOnClickListener(v -> writeExpression(")"));
-            btnCaret.setOnClickListener(v -> writeExpression("^"));
-            btnEqual.setOnClickListener(v -> enterPress());
-
-            btnDelete.setOnClickListener(v -> delScreen());
+            btnZero.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"0"));
+            btnOne.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"1"));
+            btnTwo.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"2"));
+            btnThree.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"3"));
+            btnFour.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"4"));
+            btnFive.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"5"));
+            btnSix.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"6"));
+            btnSeven.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"7"));
+            btnEight.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"8"));
+            btnNine.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"9"));
+            btnDecimal.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"."));
+            btnDoubleZero.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"00"));
+            btnPercentage.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"%"));
+            btnDivide.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"÷"));
+            btnMultiply.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"x"));
+            btnMinus.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"-"));
+            btnAdd.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"+"));
+            btnSqrt.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"sqrt("));
+            btnBracketLeft.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"("));
+            btnBracketRight.setOnClickListener(v -> writeExpression(tvResult,tvExpression,")"));
+            btnCaret.setOnClickListener(v -> writeExpression(tvResult,tvExpression,"^"));
+            btnEqual.setOnClickListener(v -> enterPress(tvResult,tvExpression));
+            btnDelete.setOnClickListener(v -> delScreen(tvResult,tvExpression));
         }
         // Trả về rootView của fragment
         return rootView;

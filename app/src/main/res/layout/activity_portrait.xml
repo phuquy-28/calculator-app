@@ -9,51 +9,66 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_weight="0">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnBracketLeft"
             android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             style="@style/UpSpecialButton"
-            android:text="(" />
+            android:text="("
+            />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnBracketRight"
             android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             style="@style/UpSpecialButton"
-            android:text=")" />
+            android:text=")"
+            />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnCaret"
             android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             style="@style/UpSpecialButton"
-            android:text="^" />
+            android:text="^"
+            />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn4"
+            android:id="@+id/btnSqrt"
             android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             style="@style/UpSpecialButton"
-            android:textSize="15sp"
-            android:text="rad" />
+            android:text="√"
+            />
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btn4"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            style="@style/UpSpecialButton"-->
+<!--            android:textSize="30sp"-->
+<!--            android:text="rad" />-->
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btnDelete"
             style="@style/UpSpecialButton"
             android:layout_width="1dp"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:contentDescription="none"
-            android:drawableEnd="@drawable/ic_action_deletebtn" />
+            android:src="@drawable/backspace"
+            android:scaleType="fitCenter"/>
+
+
     </LinearLayout>
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:rowCount="5"
-        android:columnCount="4">
+        android:columnCount="4"
+        android:layout_weight="1">
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClear"
             style="@style/SpecialButton"

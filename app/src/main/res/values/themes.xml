@@ -44,7 +44,7 @@
         <item name="android:layout_weight">1</item>
         <item name="android:background">@color/colorBtnNumberBG</item>
         <item name="android:textColor">@color/colorBtnNumberTEXT</item>
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">30sp</item>
         <item name="android:layout_margin">2dp</item>
         <item name="android:textStyle">bold</item>
     </style>
