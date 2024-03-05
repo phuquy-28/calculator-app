@@ -38,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawer(GravityCompat.START);
                 if (id == R.id.nav_calculator) {
                     replaceFragment(new CalculatorFragment());
+                    toolbar.setTitle("Calculator");
                 } else if (id == R.id.nav_convert) {
                     replaceFragment(new ConvertFragment());
+                    toolbar.setTitle("Convert");
                 } else {
                     return true;
                 }
