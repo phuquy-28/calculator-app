@@ -158,15 +158,15 @@ public class ConvertFragment extends Fragment {
     }
 
     private void setKm(double km_in) {
-        km.setText(String.format("%.7f", km_in));
-        m.setText(String.format("%.7f", km_in * 1000));
-        cm.setText(String.format("%.7f", km_in * 100000));
-        mm.setText(String.format("%.7f", km_in * 1000000));
-        microm.setText(String.format("%.7f", km_in * 1000000000));
-        nm.setText(String.format("%.7f", km_in * 1000000 * 1000000));
-        mile.setText(String.format("%.7f", km_in / 1.609));
-        yard.setText(String.format("%.7f", km_in * 1094));
-        foot.setText(String.format("%.7f", km_in * 3281));
-        inch.setText(String.format("%.7f", km_in * 39370));
+        km.setText(String.format("%.2f", km_in));
+        m.setText(String.format("%.2f", km_in * 1000));
+        cm.setText(String.format("%.2f", km_in * 100000));
+        mm.setText(String.format("%.2f", km_in * 1000000));
+        microm.setText(String.format("%.2f", km_in * 1000000000));
+        nm.setText(String.format("%.2f", km_in * 1000000 * 1000000));
+        mile.setText(String.format("%.2f", km_in / 1.609));
+        yard.setText(String.format("%.2f", km_in * 1094));
+        foot.setText(String.format("%.2f", km_in * 3281));
+        inch.setText(String.format("%.2f", km_in * 39370));
     }
 }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ecf0f9"
     tools:context=".ConvertFragment">
 
     <RelativeLayout
@@ -394,7 +395,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="@color/black"/>
+            />
 
     </LinearLayout>
 
