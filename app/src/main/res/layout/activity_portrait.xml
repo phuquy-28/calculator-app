@@ -38,7 +38,7 @@
             android:layout_height="match_parent"
             style="@style/UpSpecialButton"
             android:textSize="15sp"
-            android:text="RAD" />
+            android:text="rad" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnDelete"
@@ -59,6 +59,7 @@
             style="@style/SpecialButton"
             android:layout_row="0"
             android:layout_column="0"
+            android:background="@color/colorBtnEqualBG"
             android:text="AC" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -73,13 +74,14 @@
             style="@style/OperatorButton"
             android:layout_row="0"
             android:layout_column="2"
-            android:text="/" />
+            android:text="÷" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnMultiply"
             style="@style/OperatorButton"
             android:layout_row="0"
             android:layout_column="3"
+            android:textAllCaps="false"
             android:text="x" />
 
         <androidx.appcompat.widget.AppCompatButton

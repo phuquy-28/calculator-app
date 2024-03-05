@@ -77,10 +77,11 @@ public class CalculatorFragment extends Fragment {
 
     private void enterPress () {
         String expression = tvResult.getText().toString();
-
+        tvExpression.setText(expression);
+        expression = expression.replaceAll(getResources().getString(R.string.divideHBtn), "/");
+        expression = expression.replaceAll("x", "*");
         Object result = (double)Math.round(eval(expression) * 100000) / 100000;
         tvResult.setText(result.toString());
-        tvExpression.setText(expression);
     }
 
     private void delScreen () {
@@ -503,8 +504,8 @@ public class CalculatorFragment extends Fragment {
             btnDecimal.setOnClickListener(v -> writeExpression("."));
             btnDoubleZero.setOnClickListener(v -> writeExpression("00"));
             btnPercentage.setOnClickListener(v -> writeExpression("%"));
-            btnDivide.setOnClickListener(v -> writeExpression("/"));
-            btnMultiply.setOnClickListener(v -> writeExpression("*"));
+            btnDivide.setOnClickListener(v -> writeExpression("÷"));
+            btnMultiply.setOnClickListener(v -> writeExpression("x"));
             btnMinus.setOnClickListener(v -> writeExpression("-"));
             btnAdd.setOnClickListener(v -> writeExpression("+"));
 
