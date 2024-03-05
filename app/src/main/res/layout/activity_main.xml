@@ -48,7 +48,7 @@
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/appbarLayout"/>
+            android:layout_below="@+id/appbarLayout" />
 
     </RelativeLayout>
     <com.google.android.material.navigation.NavigationView
@@ -57,6 +57,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:menu="@menu/my_navigation_items"
+        app:headerLayout="@layout/header_drawer"
         android:visibility="visible"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
