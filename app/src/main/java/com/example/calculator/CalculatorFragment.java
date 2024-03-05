@@ -1,8 +1,10 @@
 package com.example.calculator;
 
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.fragment.app.Fragment;
@@ -11,10 +13,15 @@ import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +40,14 @@ public class CalculatorFragment extends Fragment {
     private String mParam2;
     private TextView previousCalculation;
     private EditText display;
+    private ArrayAdapter<String> historyAdapter;
+    private List<String> historyList = new ArrayList<>();
+    AppCompatButton btnOne, btnTwo, btnThree, btnFour, btnFive,
+            btnSix, btnSeven, btnEight, btnNine, btnZero, btnDoubleZero;
+    AppCompatButton btnDecimal, btnClear, btnEqual, btnPercentage,
+            btnDivide, btnMultiply, btnMinus, btnAdd, btnDelete;
+    AppCompatButton btnBracketLeft,btnBracketRight,btnCaret, btnHistory;
+    TextView tvExpression, tvResult;
 
     public CalculatorFragment() {
         // Required empty public constructor
@@ -65,7 +80,6 @@ public class CalculatorFragment extends Fragment {
         }
     }
 
-    TextView tvExpression, tvResult;
     private void writeExpression (String value) {
         if (tmp == 1 && value != "÷" && value != "+" && value != "-" && value != "x"){
             clearScreen();
@@ -80,10 +94,25 @@ public class CalculatorFragment extends Fragment {
         tmp = 1;
         String expression = tvResult.getText().toString();
         tvExpression.setText(expression);
+        String temp = expression;
         expression = expression.replaceAll(getResources().getString(R.string.divideHBtn), "/");
         expression = expression.replaceAll("x", "*");
-        Object result = (double)Math.round(eval(expression) * 100000) / 100000;
+        expression = expression.replaceAll(getResources().getString(R.string.percentageHBtn), "/100");
+        String result;
+        if (Math.round(eval(expression)) - eval(expression) != 0) {
+            result = String.valueOf(Math.round(eval(expression)*1e6)/1e6);
+        }
+        else {
+            result = String.valueOf(Math.round(eval(expression)));
+        }
         tvResult.setText(result.toString());
+
+        temp = temp + " = " + result;
+        // Thêm một phần tử mới vào historyList
+        historyList.add(temp);
+
+        // Cập nhật historyAdapter để hiển thị dữ liệu mới
+        updateHistory(historyList);
     }
 
     private void delScreen () {
@@ -122,6 +151,7 @@ public class CalculatorFragment extends Fragment {
 
         Configuration configuration = getResources().getConfiguration();
         int orientation = configuration.orientation;
+        historyAdapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1);
 
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             previousCalculation = rootView.findViewById(R.id.preCalHTextView);
@@ -303,15 +333,33 @@ public class CalculatorFragment extends Fragment {
                 public void onClick(View v) {
                     String userExp = display.getText().toString();
 
+                    String temp = userExp;
+
                     previousCalculation.setText(userExp);
 
                     userExp = userExp.replaceAll(getResources().getString(R.string.divideHBtn), "/");
                     userExp = userExp.replaceAll(getResources().getString(R.string.multiplyHBtn), "*");
+                    userExp = userExp.replaceAll("log2", "logtwo");
+                    userExp = userExp.replaceAll("log10", "logten");
+                    userExp = userExp.replaceAll(getResources().getString(R.string.percentageHBtn), "/100");
 
-                    String result = String.valueOf(eval(userExp));
+                    String result;
+                    if (Math.round(eval(userExp)) - eval(userExp) != 0) {
+                        result = String.valueOf(Math.round(eval(userExp)*1e6)/1e6);
+                    }
+                    else {
+                        result = String.valueOf(Math.round(eval(userExp)));
+                    }
 
                     display.setText(result);
                     display.setSelection(result.length());
+
+                    temp = temp + " = " + result;
+                    // Thêm một phần tử mới vào historyList
+                    historyList.add(temp);
+
+                    // Cập nhật historyAdapter để hiển thị dữ liệu mới
+                    updateHistory(historyList);
                 }
             });
 
@@ -484,6 +532,7 @@ public class CalculatorFragment extends Fragment {
             btnClear = (AppCompatButton) rootView.findViewById(R.id.btnClear);
             btnPercentage = (AppCompatButton) rootView.findViewById(R.id.btnPercentage);
             btnDivide = (AppCompatButton) rootView.findViewById(R.id.btnDivide);
+            btnSqrt = (AppCompatButton) rootView.findViewById(R.id.btnSqrt);
             btnMultiply = (AppCompatButton) rootView.findViewById(R.id.btnMultiply);
             btnMinus = (AppCompatButton) rootView.findViewById(R.id.btnMinus);
             btnAdd = (AppCompatButton) rootView.findViewById(R.id.btnAdd);
@@ -492,10 +541,11 @@ public class CalculatorFragment extends Fragment {
             btnBracketLeft = (AppCompatButton) rootView.findViewById(R.id.btnBracketLeft);
             btnBracketRight = (AppCompatButton) rootView.findViewById(R.id.btnBracketRight);
             btnCaret = (AppCompatButton) rootView.findViewById(R.id.btnCaret);
-            btnSqrt = (AppCompatButton) rootView.findViewById(R.id.btnSqrt);
             /* Text View*/
             tvExpression = (TextView) rootView.findViewById(R.id.tvExpression);
             tvResult = (TextView) rootView.findViewById(R.id.tvResult);
+
+            btnHistory = (AppCompatButton) getActivity().findViewById(R.id.btnHistory);
 
             clearScreen();
 
@@ -525,6 +575,7 @@ public class CalculatorFragment extends Fragment {
             btnCaret.setOnClickListener(v -> writeExpression("^"));
             btnEqual.setOnClickListener(v -> enterPress());
             btnDelete.setOnClickListener(v -> delScreen());
+            btnHistory.setOnClickListener(v -> showHistoryDialog());
         }
         // Trả về rootView của fragment
         return rootView;
@@ -542,7 +593,6 @@ public class CalculatorFragment extends Fragment {
 
     }
 
-    //eval function
     public static double eval(final String str) {
         return new Object() {
             int pos = -1, ch;
@@ -603,6 +653,17 @@ public class CalculatorFragment extends Fragment {
                 } else if (ch == 'π') { // Ký tự Pi
                     nextChar();
                     x = Math.PI;
+                } else if (ch == 'e') { // Ký tự e
+                    nextChar();
+                    if (ch == 'x' && pos + 1 < str.length() && str.charAt(pos + 1) == 'p') {
+                        // Nếu người dùng nhập "exp", xử lý như là hàm toán học "exp"
+                        nextChar(); // Bỏ qua ký tự 'x'
+                        nextChar(); // Bỏ qua ký tự 'p'
+                        x = Math.exp(parseFactor());
+                    } else {
+                        // Nếu không có số sau ký tự 'p', xử lý như là giá trị của e
+                        x = Math.exp(1);
+                    }
                 } else if ((ch >= '0' && ch <= '9') || ch == '.') { // numbers
                     while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
                     x = Double.parseDouble(str.substring(startPos, this.pos));
@@ -611,12 +672,16 @@ public class CalculatorFragment extends Fragment {
                     String func = str.substring(startPos, this.pos);
                     x = parseFactor();
                     if (func.equals("sqrt")) x = Math.sqrt(x);
-                    else if (func.equals("sin")) x = Math.sin(Math.toRadians(x));
-                    else if (func.equals("cos")) x = Math.cos(Math.toRadians(x));
-                    else if (func.equals("tan")) x = Math.tan(Math.toRadians(x));
-                    else if (func.equals("tan")) x = Math.tan(Math.toRadians(x));
-                    else if (func.equals("log")) x = Math.log10(x);
+                    else if (func.equals("sin")) x = Math.sin(x);
+                    else if (func.equals("cos")) x = Math.cos(x);
+                    else if (func.equals("tan")) x = Math.tan(x);
+                    else if (func.equals("arcsin")) x = Math.asin(x);
+                    else if (func.equals("arccos")) x = Math.acos(x);
+                    else if (func.equals("arctan")) x = Math.atan(x);
+                    else if (func.equals("logtwo")) x = Math.log(x)/Math.log(2);
+                    else if (func.equals("logten")) x = Math.log10(x);
                     else if (func.equals("ln")) x = Math.log(x);
+                    else if (func.equals("abs")) x = Math.abs(x);
                     else throw new RuntimeException("Unknown function: " + func);
                 } else {
                     throw new RuntimeException("Unexpected: " + (char)ch);
@@ -627,5 +692,34 @@ public class CalculatorFragment extends Fragment {
                 return x;
             }
         }.parse();
+    }
+
+    private void showHistoryDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Lịch sử phép tính");
+
+        // Tạo danh sách lịch sử hiển thị trong dialog
+        ListView listView = new ListView(requireContext());
+        listView.setAdapter(historyAdapter);
+
+        builder.setView(listView);
+
+        // Nút đóng dialog
+        builder.setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        // Tạo và hiển thị dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void updateHistory(List<String> historyList) {
+        historyAdapter.clear();
+        historyAdapter.addAll(historyList);
+        historyAdapter.notifyDataSetChanged();
     }
 }

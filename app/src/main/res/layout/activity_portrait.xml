@@ -41,15 +41,7 @@
             android:layout_width="1dp"
             android:layout_height="50dp"
             style="@style/UpSpecialButton"
-            android:text="√"
-            />
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id="@+id/btn4"-->
-<!--            android:layout_width="1dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            style="@style/UpSpecialButton"-->
-<!--            android:textSize="30sp"-->
-<!--            android:text="rad" />-->
+            android:text="√" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/btnDelete"
